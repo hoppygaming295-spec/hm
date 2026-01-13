@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nano</title>
+  <link rel="stylesheet" href="StyleForJavaScript.CSS">
+</head>
+<body>
+
+<header>
+  <div class="left">Nano</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#dashboard">Dashboard</a>
+    <a class="download" href="#download">Download</a>
+  </nav>
+</header>
+
+<div id="home" class="page active">
+  <h1>Small App.<br>Huge Future.</h1>
+  <p>Nano is a fictional next-gen app designed to feel fast, minimal, and powerful.</p>
+  <div class="grid">
+    <a href="#features" class="card">🚀 Built for speed</a>
+    <a href="#features" class="card">🎨 Modern UI</a>
+    <a href="#features" class="card">🧠 Intuitive</a>
+  </div>
+</div>
+
+<div id="features" class="page">
+  <h1>Features</h1>
+  <p>Everything Nano pretends to do — it does it extremely well.</p>
+  <div class="grid">
+    <a href="#dashboard" class="card">⚡ Fast performance</a>
+    <a href="#dashboard" class="card">🔒 Secure</a>
+    <a href="#dashboard" class="card">✨ Clean UI</a>
+    <a href="#dashboard" class="card">☁️ Instant sync</a>
+    <a href="#dashboard" class="card">🛠 Custom workflows</a>
+    <a href="#dashboard" class="card">📈 Analytics dashboard</a>
+  </div>
+</div>
+
+<div id="pricing" class="page">
+  <h1>Pricing</h1>
+  <p>Simple pricing. No tricks. Cancel anytime.</p>
+  <div class="grid">
+    <a href="#download" class="card">Free — $0 / month</a>
+    <a href="#download" class="card">Pro — $9 / month</a>
+    <a href="#download" class="card">Ultra — $19 / month</a>
+  </div>
+</div>
+
+<div id="about" class="page">
+  <h1>About Nano</h1>
+  <p>Nano is a fictional product created to demonstrate clean design and multi-page navigation.</p>
+  <div class="grid">
+    <div class="card">Founded: 2025</div>
+    <div class="card">Mission: Make apps feel effortless</div>
+    <div class="card">Status: Imaginary</div>
+  </div>
+</div>
+
+<div id="dashboard" class="page">
+  <h1>Dashboard</h1>
+  <p>Welcome back. Here’s a fake but cool overview of your Nano activity.</p>
+  <div class="grid">
+    <a href="#features" class="card">📊 Usage Stats</a>
+    <a href="#features" class="card">📁 Projects</a>
+    <a href="#features" class="card">🔐 Security</a>
+    <a href="#features" class="card">⚙️ Settings</a>
+  </div>
+</div>
+
+<div id="download" class="page">
+  <h1>Download Nano</h1>
+  <p>Your download will start automatically.</p>
+  <div id="progressBarContainer">
+    <div id="progressBar"></div>
+  </div>
+  <a id="dogLink" href="https://placedog.net/600/400" download="nano-dog.jpg">
+    <img id="dogImage" src="" alt="Dog" style="display:none;" />
+  </a>
+</div>
+
+<footer>© 2025 Nano — imaginary but polished.</footer>
+
+<script>
+  const pages = document.querySelectorAll('.page');
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = link.getAttribute('href').substring(1);
+      pages.forEach(p => p.classList.remove('active'));
+      const page = document.getElementById(target);
+      if(page) {
+        page.classList.add('active');
+        if(target==='download') startDownload();
+      }
+    });
+  });
+
+  function startDownload() {
+    const progressBar = document.getElementById('progressBar');
+    const dogImage = document.getElementById('dogImage');
+    dogImage.style.display = 'none';
+    let width = 0;
+    progressBar.style.width = '0%';
+    const interval = setInterval(() => {
+      if(width >= 100) {
+        clearInterval(interval);
+        dogImage.src = 'https://placedog.net/600/400';
+        dogImage.style.display = 'block';
+      } else {
+        width += 1;
+        progressBar.style.width = width + '%';
+      }
+    }, 30);
+  }
+</script>
+
+</body>
+</html>
